@@ -1,7 +1,12 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
+import { MeetProvider } from "./context/MeetContext";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <MeetProvider>
+      <Component {...pageProps} />
+    </MeetProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

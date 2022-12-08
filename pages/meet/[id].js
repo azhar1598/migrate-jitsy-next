@@ -4,7 +4,7 @@ import { MeetContext } from "../../context/MeetContext";
 
 const MeetPage = ({ match }) => {
   //AS OF NOW DOMAIN WOULD BE JITSI'S AS WE ARE STILL USING THIER SERVERS
-  const domain = "meet.jit.si";
+  const domain = "jitsi-nextjs.web.app";
   let api = {};
 
   const router = useRouter();

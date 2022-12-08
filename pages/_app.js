@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { MeetProvider } from "./context/MeetContext";
+import { MeetProvider } from "../context/MeetContext";
 
 function MyApp({ Component, pageProps }) {
   return (

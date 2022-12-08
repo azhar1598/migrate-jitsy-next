@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useCallback, useContext } from "react";
-import { MeetContext } from "../context/MeetContext";
+import { MeetContext } from "../../context/MeetContext";
 
 const MeetPage = ({ match }) => {
   //AS OF NOW DOMAIN WOULD BE JITSI'S AS WE ARE STILL USING THIER SERVERS

@@ -14,7 +14,7 @@ import Alert from "@mui/material/Alert";
 
 import { Button, createTheme, Paper, Snackbar, TextField } from "@mui/material";
 
-import { generateString } from "./utils";
+import { generateString } from "../utils";
 import { MeetContext } from "../context/MeetContext";
 
 // Alert when the user hasn't filled up their name

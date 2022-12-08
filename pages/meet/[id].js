@@ -14,7 +14,6 @@ const MeetPage = ({ match }) => {
 
   // INTIALISE THE MEET WITH THIS FUNCTION
   const startMeet = useCallback(() => {
-
     const options = {
       roomName: router.query.id,
       width: "100%",
@@ -30,7 +29,6 @@ const MeetPage = ({ match }) => {
       },
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // if (temp.length <= 1) {
     api = new window.JitsiMeetExternalAPI(domain, options);
 
     api.addEventListeners({
@@ -40,7 +38,6 @@ const MeetPage = ({ match }) => {
       videoConferenceJoined: handleVideoConferenceJoined,
       videoConferenceLeft: handleVideoConferenceLeft,
     });
-    // }
   }, [api]);
 
   useEffect(() => {
@@ -58,17 +55,12 @@ const MeetPage = ({ match }) => {
 
   const handleParticipantLeft = async (participant) => {
     console.log("handleParticipantLeft", participant);
-
     await getParticipants();
   };
 
   const handleParticipantJoined = async (participant) => {
     console.log("handleParticipantJoined", participant);
-  
-
     await getParticipants();
-
-  
   };
 
   const handleVideoConferenceJoined = async (participant) => {
@@ -83,13 +75,11 @@ const MeetPage = ({ match }) => {
 
   // GETTING ALL PARTICIPANTS
   const getParticipants = () => {
-    let participants = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(api.getParticipantsInfo());
       }, 500);
     });
-    console.log("particiapnann", participants);
-    return participants;
   };
 
   return (

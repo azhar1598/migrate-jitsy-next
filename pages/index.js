@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, {  useContext, useState } from "react";
 // import {
 //   Paper,
 //   makeStyles,
@@ -16,6 +16,7 @@ import { Button, createTheme, Paper, Snackbar, TextField } from "@mui/material";
 
 import { generateString } from "../utils";
 import { MeetContext } from "../context/MeetContext";
+;
 
 // Alert when the user hasn't filled up their name
 // function Alert(props) {
@@ -54,6 +55,8 @@ const StartupPage = () => {
     }
     setOpen(false);
   };
+
+  console.log('hello world')
 
   return (
     <div style={{padding:'20px'}}>

@@ -2,10 +2,11 @@ import { useRouter } from "next/router";
 import React, { useEffect, useCallback, useContext } from "react";
 import { MeetContext } from "../../context/MeetContext";
 
-const MeetPage = ({ match }) => {
+const MeetPage = ({ query }) => {
   //AS OF NOW DOMAIN WOULD BE JITSI'S AS WE ARE STILL USING THIER SERVERS
-  const domain = "jitsi-nextjs.web.app";
+  const domain = "meet.jit.si";
   let api = {};
+
 
   const router = useRouter();
 
@@ -39,6 +40,8 @@ const MeetPage = ({ match }) => {
       videoConferenceLeft: handleVideoConferenceLeft,
     });
   }, [api]);
+
+ 
 
   useEffect(() => {
     if (window.JitsiMeetExternalAPI) {
@@ -106,3 +109,81 @@ const MeetPage = ({ match }) => {
 };
 
 export default MeetPage;
+
+// export const getStaticPaths = () => ({
+//   paths: ['/meet/[id]'],
+//   fallback: true,
+// });
+
+// export const getStaticProps=()=>{
+
+//   return {
+//         props: {
+//           apiData,
+//         },
+//       };
+// }
+
+// export const getStaticPaths = async (params) => {
+//   // Get all posts via API, file, etc.
+//   // const posts = [
+//   //   { id: "1" },
+//   //   { id: "2" },
+//   //   { id: "3" },
+//   //   { id: "4" },
+//   //   { id: "5" },
+//   // ]; // Example
+//   // const paths = posts.map((post) => ({
+//   //   params: { id: post.id },
+//   // }));
+//   console.log("parammms", params);
+
+//   return { paths: pa, fallback: false };
+// };
+
+// export async function getStaticProps({params}) {
+
+//   console.log('parrrramas',params)
+
+//   const options = {
+//     roomName: params.query.id,
+//     width: "100%",
+//     height: 500,
+//     configOverwrite: { prejoinPageEnabled: false },
+//     interfaceConfigOverwrite: {
+//       // overwrite interface properties if you want
+//     },
+//     // VIDEO FRAME WILL BE ADDED HERE
+//     parentNode: document.querySelector("#jitsi-iframe"),
+//     userInfo: {
+//       displayName: name,
+//     },
+//   };
+//   // eslint-disable-next-line react-hooks/exhaustive-deps
+//   api = new window.JitsiMeetExternalAPI(domain, options);
+
+//   let data=api.addEventListeners({
+//     readyToClose: handleClose,
+//     participantLeft: handleParticipantLeft,
+//     participantJoined: handleParticipantJoined,
+//     videoConferenceJoined: handleVideoConferenceJoined,
+//     videoConferenceLeft: handleVideoConferenceLeft,
+//   });
+
+//   return {
+//     props: {
+//       apiData,
+//     },
+//   };
+// }
+
+// export const getServerSideProps = async ({ query }) => {
+//   console.log("getservvv", query);
+
+//   return {
+//     props: {
+//       query:  query.id,
+        
+//     },
+//   };
+// };

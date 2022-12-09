@@ -1,14 +1,14 @@
 // import { JitsiMeeting } from "@jitsi/react-sdk";
+import { JitsiMeeting } from "@jitsi/react-sdk";
 import { useRouter } from "next/router";
-import React, { useEffect, useCallback, useContext } from "react";
-import { MeetContext, MNameContext } from "../../context/MeetContext";
+import React, { useCallback, useContext, useEffect } from "react";
+import { MeetContext, MNameContext } from "../context/MeetContext";
+// import React, { useEffect, useCallback, useContext } from "react";
+// import { MeetContext, MNameContext } from "../../context/MeetContext";
 
-import dynamic from "next/dynamic";
 
-const ComponentWithNoSSR = dynamic(
-  () => import("../../component/MeetPage.jsx"),
-  { ssr: false }
-);
+
+
 
 const MeetPage = ({ query }) => {
   //AS OF NOW DOMAIN WOULD BE JITSI'S AS WE ARE STILL USING THIER SERVERS
@@ -23,7 +23,7 @@ const MeetPage = ({ query }) => {
 
   // INTIALISE THE MEET WITH THIS FUNCTION
   // const startMeet = useCallback(() => {
-
+    
   //   const options = {
   //     roomName: router.query.id,
   //     width: "100%",
@@ -92,33 +92,34 @@ const MeetPage = ({ query }) => {
     });
   };
 
-  return <ComponentWithNoSSR/>
-  //   <React.Fragment>
-  //     <header
-  //       style={{
-  //         backgroundColor: "rgb(10, 25, 41)",
-  //         color: "white",
-  //         textAlign: "center",
-  //       }}
-  //     >
-  //       <p style={{ margin: 0, padding: 10 }}>{mName}</p>
-  //     </header>
-  //     {/* <div id="jitsi-iframe" style={{ marginBottom: 0 }}></div> */}
+  return (
+    <React.Fragment>
+      <header
+        style={{
+          backgroundColor: "rgb(10, 25, 41)",
+          color: "white",
+          textAlign: "center",
+        }}
+      >
+        <p style={{ margin: 0, padding: 10 }}>{mName}</p>
+      </header>
+      {/* <div id="jitsi-iframe" style={{ marginBottom: 0 }}></div> */}
+      
 
-  //     {/* <JitsiMeeting
-  //       roomName={mName} // make sure it's a good one!
-  //       getIFrameRef={(node) => (node.style.height = "600px")}
-  //     /> */}
+      <JitsiMeeting
+        roomName={mName} // make sure it's a good one!
+        getIFrameRef={(node) => (node.style.height = "600px")}
+      />
 
-  //     {/* <div
-  //       style={{
-  //         backgroundColor: "rgb(10, 25, 41)",
-  //         height: "20vh",
-  //         margin: 0,
-  //       }}
-  //     ></div> */}
-  //   </React.Fragment>
-  // );
+      {/* <div
+        style={{
+          backgroundColor: "rgb(10, 25, 41)",
+          height: "20vh",
+          margin: 0,
+        }}
+      ></div> */}
+    </React.Fragment>
+  );
 };
 
 export default MeetPage;

@@ -35,7 +35,7 @@ const StartupPage = () => {
 
   // will be using name across all pages from context
   const [name, setName] = useContext(MeetContext);
-  const[mName,setMName]=useContext(MNameContext)
+  const[mName,setMName]=useContext(MNameContext);
   // const [mName, setMName] = useContext(MeetContext);
 
   // state and handler function for the snackbar

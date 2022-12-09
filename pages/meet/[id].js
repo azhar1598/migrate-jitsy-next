@@ -1,3 +1,4 @@
+import { JitsiMeeting } from "@jitsi/react-sdk";
 import { useRouter } from "next/router";
 import React, { useEffect, useCallback, useContext } from "react";
 import { MeetContext, MNameContext } from "../../context/MeetContext";
@@ -14,40 +15,41 @@ const MeetPage = ({ query }) => {
   const [mName] = useContext(MNameContext);
 
   // INTIALISE THE MEET WITH THIS FUNCTION
-  const startMeet = useCallback(() => {
-    const options = {
-      roomName: router.query.id,
-      width: "100%",
-      height: 500,
-      configOverwrite: { prejoinPageEnabled: false },
-      interfaceConfigOverwrite: {
-        // overwrite interface properties if you want
-      },
-      // VIDEO FRAME WILL BE ADDED HERE
-      parentNode: document.querySelector("#jitsi-iframe"),
-      userInfo: {
-        displayName: name,
-      },
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    api = new window.JitsiMeetExternalAPI(domain, options);
+  // const startMeet = useCallback(() => {
+    
+  //   const options = {
+  //     roomName: router.query.id,
+  //     width: "100%",
+  //     height: 500,
+  //     configOverwrite: { prejoinPageEnabled: false },
+  //     interfaceConfigOverwrite: {
+  //       // overwrite interface properties if you want
+  //     },
+  //     // VIDEO FRAME WILL BE ADDED HERE
+  //     parentNode: document.querySelector("#jitsi-iframe"),
+  //     userInfo: {
+  //       displayName: name,
+  //     },
+  //   };
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  //   api = new window.JitsiMeetExternalAPI(domain, options);
 
-    api.addEventListeners({
-      readyToClose: handleClose,
-      participantLeft: handleParticipantLeft,
-      participantJoined: handleParticipantJoined,
-      videoConferenceJoined: handleVideoConferenceJoined,
-      videoConferenceLeft: handleVideoConferenceLeft,
-    });
-  }, [api]);
+  //   api.addEventListeners({
+  //     readyToClose: handleClose,
+  //     participantLeft: handleParticipantLeft,
+  //     participantJoined: handleParticipantJoined,
+  //     videoConferenceJoined: handleVideoConferenceJoined,
+  //     videoConferenceLeft: handleVideoConferenceLeft,
+  //   });
+  // }, [api]);
 
-  useEffect(() => {
-    if (window.JitsiMeetExternalAPI) {
-      startMeet();
-    } else {
-      alert("JitsiMeetExternalAPI not loaded");
-    }
-  }, [startMeet]);
+  // useEffect(() => {
+  //   if (window.JitsiMeetExternalAPI) {
+  //     startMeet();
+  //   } else {
+  //     alert("JitsiMeetExternalAPI not loaded");
+  //   }
+  // }, [startMeet]);
 
   // ALL OUR HANDLERS
   const handleClose = () => {
@@ -94,14 +96,21 @@ const MeetPage = ({ query }) => {
       >
         <p style={{ margin: 0, padding: 10 }}>{mName}</p>
       </header>
-      <div id="jitsi-iframe" style={{ marginBottom: 0 }}></div>
-      <div
+      {/* <div id="jitsi-iframe" style={{ marginBottom: 0 }}></div>
+       */}
+
+      <JitsiMeeting
+        roomName={mName} // make sure it's a good one!
+        getIFrameRef={(node) => (node.style.height = "600px")}
+      />
+
+      {/* <div
         style={{
           backgroundColor: "rgb(10, 25, 41)",
           height: "20vh",
           margin: 0,
         }}
-      ></div>
+      ></div> */}
     </React.Fragment>
   );
 };

@@ -7,10 +7,10 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <script
+          {/* <script
             src="https://meet.jit.si/external_api.js"
             defer={true}
-          ></script>
+          ></script> */}
         </Head>
         <body>
           <div id="style"></div>

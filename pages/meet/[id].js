@@ -1,17 +1,17 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useCallback, useContext } from "react";
-import { MeetContext } from "../../context/MeetContext";
+import { MeetContext, MNameContext } from "../../context/MeetContext";
 
 const MeetPage = ({ query }) => {
   //AS OF NOW DOMAIN WOULD BE JITSI'S AS WE ARE STILL USING THIER SERVERS
   const domain = "meet.jit.si";
   let api = {};
 
-
   const router = useRouter();
 
   // THIS IS TO EXTRACT THE NAME WHICH WAS FILLED IN THE FIRST PAGE
   const [name] = useContext(MeetContext);
+  const [mName] = useContext(MNameContext);
 
   // INTIALISE THE MEET WITH THIS FUNCTION
   const startMeet = useCallback(() => {
@@ -40,8 +40,6 @@ const MeetPage = ({ query }) => {
       videoConferenceLeft: handleVideoConferenceLeft,
     });
   }, [api]);
-
- 
 
   useEffect(() => {
     if (window.JitsiMeetExternalAPI) {
@@ -94,7 +92,7 @@ const MeetPage = ({ query }) => {
           textAlign: "center",
         }}
       >
-        <p style={{ margin: 0, padding: 10 }}>Meeting name</p>
+        <p style={{ margin: 0, padding: 10 }}>{mName}</p>
       </header>
       <div id="jitsi-iframe" style={{ marginBottom: 0 }}></div>
       <div
@@ -183,7 +181,7 @@ export default MeetPage;
 //   return {
 //     props: {
 //       query:  query.id,
-        
+
 //     },
 //   };
 // };

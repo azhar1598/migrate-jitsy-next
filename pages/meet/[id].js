@@ -1,9 +1,11 @@
 // import { JitsiMeeting } from "@jitsi/react-sdk";
 import { useRouter } from "next/router";
-import React, { useEffect, useCallback, useContext } from "react";
+import React, { useEffect, useCallback, useContext, useState } from "react";
 import { MeetContext, MNameContext } from "../../context/MeetContext";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import dynamic from "next/dynamic";
+import Script from "next/script";
 
 const ComponentWithNoSSR = dynamic(
   () => import("../../component/MeetPage.jsx"),
@@ -91,8 +93,39 @@ const MeetPage = ({ query }) => {
       }, 500);
     });
   };
+  const isSSR = () => typeof window === "undefined";
 
-  return <ComponentWithNoSSR/>
+  const [enable, setEnable] = useState(false);
+  const [showButton, setShowButton] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowButton(false);
+      setEnable(true);
+    }, 5000);
+  }, []);
+
+  return (
+    <>
+      <Script src="https://meet.jit.si/external_api.js" />
+
+      {showButton && (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            justifyContent: "center",
+            height: "100vh",
+          }}
+        >
+          <CircularProgress color="secondary" />
+          <h3>Please Wait...</h3>
+        </div>
+      )}
+      {enable && !isSSR() && <ComponentWithNoSSR />}
+    </>
+  );
   //   <React.Fragment>
   //     <header
   //       style={{

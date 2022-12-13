@@ -19,7 +19,7 @@ const MeetPage = ({ query }) => {
   // INTIALISE THE MEET WITH THIS FUNCTION
   const startMeet = useCallback(() => {
     const options = {
-      roomName: router.query.id,
+      roomName:{mName},
       width: "100%",
       height: 500,
       configOverwrite: {

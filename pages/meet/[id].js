@@ -53,11 +53,12 @@ const MeetPage = ({ query }) => {
           style={{
             position: "absolute",
             zIndex: 2,
-            height: "60px",
+            height: "70px",
             width: "100px",
             backgroundColor: "black",
             marginTop: "7vh",
             marginLeft: "2vw",
+            borderRadius:'10px'
             // borderRadius: "15px",
           }}
         />

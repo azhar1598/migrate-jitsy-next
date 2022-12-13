@@ -16,6 +16,7 @@ import { Button, createTheme, Paper, Snackbar, TextField } from "@mui/material";
 
 import { generateString } from "../utils";
 import { MeetContext, MNameContext } from "../context/MeetContext";
+import Script from "next/script";
 // Alert when the user hasn't filled up their name
 // function Alert(props) {
 //   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -35,7 +36,7 @@ const StartupPage = () => {
 
   // will be using name across all pages from context
   const [name, setName] = useContext(MeetContext);
-  const[mName,setMName]=useContext(MNameContext)
+  const [mName, setMName] = useContext(MNameContext);
   // const [mName, setMName] = useContext(MeetContext);
 
   // state and handler function for the snackbar
@@ -56,6 +57,7 @@ const StartupPage = () => {
 
   return (
     <div style={{ padding: "20px" }}>
+  
       <div
         style={{
           display: "flex",
@@ -67,7 +69,7 @@ const StartupPage = () => {
         <img src="/favicon.ico" alt="logo here" />
 
         <h4>MAGIC FEST</h4>
-        <div style={{ marginBottom: "1.5rem" }}>
+        <div style={{ marginBottom: "1.5rem" ,}}>
           <TextField
             label="Meeting Name"
             variant="outlined"
@@ -75,9 +77,10 @@ const StartupPage = () => {
             // className={classes.input}
             value={mName}
             onChange={(e) => setMName(e.target.value)}
+            style={{marginRight:'20px'}}
           />
           <TextField
-            label="Name"
+            label="Naame"
             variant="outlined"
             color="secondary"
             // className={classes.input}

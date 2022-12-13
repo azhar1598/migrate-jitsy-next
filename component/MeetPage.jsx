@@ -1,16 +1,10 @@
 // import { JitsiMeeting } from "@jitsi/react-sdk";
+import { JitsiMeeting } from "@jitsi/react-sdk";
 import { useRouter } from "next/router";
-import React, { useEffect, useCallback, useContext, useState } from "react";
-import { MeetContext, MNameContext } from "../../context/MeetContext";
-import CircularProgress from "@mui/material/CircularProgress";
-
-import dynamic from "next/dynamic";
-import Script from "next/script";
-
-const ComponentWithNoSSR = dynamic(
-  () => import("../../component/MeetPage.jsx"),
-  { ssr: false }
-);
+import React, { useCallback, useContext, useEffect } from "react";
+import { MeetContext, MNameContext } from "../context/MeetContext";
+// import React, { useEffect, useCallback, useContext } from "react";
+// import { MeetContext, MNameContext } from "../../context/MeetContext";
 
 const MeetPage = ({ query }) => {
   //AS OF NOW DOMAIN WOULD BE JITSI'S AS WE ARE STILL USING THIER SERVERS
@@ -24,41 +18,45 @@ const MeetPage = ({ query }) => {
   const [mName] = useContext(MNameContext);
 
   // INTIALISE THE MEET WITH THIS FUNCTION
-  // const startMeet = useCallback(() => {
+  const startMeet = useCallback(() => {
+    const options = {
+      roomName: router.query.id,
+      width: "100%",
+      height: 500,
+      configOverwrite: { prejoinPageEnabled: false },
+      interfaceConfigOverwrite: {
+        // overwrite interface properties if you want
+      },
+      // VIDEO FRAME WILL BE ADDED HERE
+      parentNode: document.querySelector("#jitsi-iframe"),
+      userInfo: {
+        displayName: name,
+      },
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    api = new window.JitsiMeetExternalAPI(domain, options);
 
-  //   const options = {
-  //     roomName: router.query.id,
-  //     width: "100%",
-  //     height: 500,
-  //     configOverwrite: { prejoinPageEnabled: false },
-  //     interfaceConfigOverwrite: {
-  //       // overwrite interface properties if you want
-  //     },
-  //     // VIDEO FRAME WILL BE ADDED HERE
-  //     parentNode: document.querySelector("#jitsi-iframe"),
-  //     userInfo: {
-  //       displayName: name,
-  //     },
-  //   };
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  //   api = new window.JitsiMeetExternalAPI(domain, options);
+    api.addEventListeners({
+      readyToClose: handleClose,
+      participantLeft: handleParticipantLeft,
+      participantJoined: handleParticipantJoined,
+      videoConferenceJoined: handleVideoConferenceJoined,
+      videoConferenceLeft: handleVideoConferenceLeft,
+    });
+  }, [api]);
 
-  //   api.addEventListeners({
-  //     readyToClose: handleClose,
-  //     participantLeft: handleParticipantLeft,
-  //     participantJoined: handleParticipantJoined,
-  //     videoConferenceJoined: handleVideoConferenceJoined,
-  //     videoConferenceLeft: handleVideoConferenceLeft,
-  //   });
-  // }, [api]);
+  useEffect(() => {
+    if (window.JitsiMeetExternalAPI) {
+      startMeet();
+    } else {
+      alert("JitsiMeetExternalAPI not loaded");
+    }
+  }, [startMeet]);
 
   // useEffect(() => {
-  //   if (window.JitsiMeetExternalAPI) {
-  //     startMeet();
-  //   } else {
-  //     alert("JitsiMeetExternalAPI not loaded");
-  //   }
-  // }, [startMeet]);
+  //   if (document.getElementById("welcome_page"))
+  //     document.getElementById("welcome_page").style.display = "none";
+  // }, []);
 
   // ALL OUR HANDLERS
   const handleClose = () => {
@@ -93,65 +91,36 @@ const MeetPage = ({ query }) => {
       }, 500);
     });
   };
-  const isSSR = () => typeof window === "undefined";
-
-  const [enable, setEnable] = useState(false);
-  const [showButton, setShowButton] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setShowButton(false);
-      setEnable(true);
-    }, 5000);
-  }, []);
 
   return (
-    <>
-      <Script src="https://meet.jit.si/external_api.js" />
+    <React.Fragment>
+      <header
+        style={{
+          backgroundColor: "#d930ff",
+          color: "white",
+          textAlign: "center",
+        }}
+      >
+        <p style={{ margin: 0, padding: 10 }}>{mName}</p>
+      </header>
 
-      {showButton && (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-            justifyContent: "center",
-            height: "100vh",
-          }}
-        >
-          <CircularProgress color="secondary" />
-          <h3>Please Wait...</h3>
-        </div>
-      )}
-      {enable && !isSSR() && <ComponentWithNoSSR />}
-    </>
+ 
+      <div id="jitsi-iframe" style={{ marginBottom: 0 }}></div>
+
+      {/* <JitsiMeeting
+        roomName={mName} // make sure it's a good one!
+        getIFrameRef={(node) => (node.style.height = "600px")}
+      /> */}
+
+      {/* <div
+        style={{
+          backgroundColor: "rgb(10, 25, 41)",
+          height: "20vh",
+          margin: 0,
+        }}
+      ></div> */}
+    </React.Fragment>
   );
-  //   <React.Fragment>
-  //     <header
-  //       style={{
-  //         backgroundColor: "rgb(10, 25, 41)",
-  //         color: "white",
-  //         textAlign: "center",
-  //       }}
-  //     >
-  //       <p style={{ margin: 0, padding: 10 }}>{mName}</p>
-  //     </header>
-  //     {/* <div id="jitsi-iframe" style={{ marginBottom: 0 }}></div> */}
-
-  //     {/* <JitsiMeeting
-  //       roomName={mName} // make sure it's a good one!
-  //       getIFrameRef={(node) => (node.style.height = "600px")}
-  //     /> */}
-
-  //     {/* <div
-  //       style={{
-  //         backgroundColor: "rgb(10, 25, 41)",
-  //         height: "20vh",
-  //         margin: 0,
-  //       }}
-  //     ></div> */}
-  //   </React.Fragment>
-  // );
 };
 
 export default MeetPage;

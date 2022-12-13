@@ -19,11 +19,10 @@ const MeetPage = ({ query }) => {
   // INTIALISE THE MEET WITH THIS FUNCTION
   const startMeet = useCallback(() => {
     const options = {
-      roomName:mName,
+      roomName:'mName',
       width: "100%",
       height: 500,
       configOverwrite: {
-       
         prejoinPageEnabled: true,
       },
       interfaceConfigOverwrite: {

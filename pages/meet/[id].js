@@ -102,12 +102,26 @@ const MeetPage = ({ query }) => {
     setTimeout(() => {
       setShowButton(false);
       setEnable(true);
+      // document.getElementsByClassName('watermark')[0].style.display='none'
     }, 5000);
   }, []);
 
   return (
     <>
       <Script src="https://meet.jit.si/external_api.js" />
+
+      <img
+        src="/logo.png"
+        style={{
+          position: "absolute",
+          zIndex: 2,
+          height: "10vh",
+          width: "10vw",
+          backgroundColor: "black",
+          marginTop: "7vh",
+          marginLeft: "2vw",
+        }}
+      />
 
       {showButton && (
         <div

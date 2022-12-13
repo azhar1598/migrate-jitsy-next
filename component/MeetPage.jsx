@@ -22,10 +22,9 @@ const MeetPage = ({ query }) => {
     const options = {
       roomName: router.query.id,
       width: "100%",
-      enableWelcomePage: true,
       height: 500,
       configOverwrite: {
-        enableWelcomePage: true,
+       
         prejoinPageEnabled: true,
       },
       interfaceConfigOverwrite: {

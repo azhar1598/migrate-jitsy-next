@@ -45,6 +45,7 @@ const MeetPage = ({ query }) => {
   return (
     <Fragment>
       <Script src="https://meet.jit.si/external_api.js" />
+
       {enable && (
         <img
           className="our-logo"
@@ -52,8 +53,8 @@ const MeetPage = ({ query }) => {
           style={{
             position: "absolute",
             zIndex: 2,
-            height: "10vh",
-            width: "10vw",
+            height: "60px",
+            width: "100px",
             backgroundColor: "black",
             marginTop: "7vh",
             marginLeft: "2vw",

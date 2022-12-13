@@ -32,11 +32,11 @@ const MeetPage = ({ query }) => {
   const isSSR = () => typeof window === "undefined";
 
   const [enable, setEnable] = useState(false);
-  const [showButton, setShowButton] = useState(true);
+  const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      setShowButton(false);
+      setShowLoader(false);
       setEnable(true);
       // document.getElementsByClassName('watermark')[0].style.display='none'
     }, 5000);
@@ -62,7 +62,7 @@ const MeetPage = ({ query }) => {
         />
       )}
 
-      {showButton && (
+      {showLoader && (
         <div
           style={{
             display: "flex",

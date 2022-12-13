@@ -79,14 +79,7 @@ const StartupPage = () => {
             onChange={(e) => setMName(e.target.value)}
             style={{marginRight:'20px'}}
           />
-          <TextField
-            label="Naame"
-            variant="outlined"
-            color="secondary"
-            // className={classes.input}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+        
         </div>
         <div style={{ marginBottom: "1.5rem", textAlign: "center" }}>
           <Button
@@ -94,7 +87,7 @@ const StartupPage = () => {
             color="secondary"
             onClick={() => {
               // if name is empty we mandate user to enter it as we also trigger to open snackbar here
-              if (name === "") {
+              if (mName === "") {
                 handleClick();
                 return;
               }

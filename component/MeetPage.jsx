@@ -22,8 +22,12 @@ const MeetPage = ({ query }) => {
     const options = {
       roomName: router.query.id,
       width: "100%",
+      enableWelcomePage: true,
       height: 500,
-      configOverwrite: { prejoinPageEnabled: false },
+      configOverwrite: {
+        enableWelcomePage: true,
+        prejoinPageEnabled: true,
+      },
       interfaceConfigOverwrite: {
         // overwrite interface properties if you want
       },
@@ -104,7 +108,6 @@ const MeetPage = ({ query }) => {
         <p style={{ margin: 0, padding: 10 }}>{mName}</p>
       </header>
 
- 
       <div id="jitsi-iframe" style={{ marginBottom: 0 }}></div>
 
       {/* <JitsiMeeting

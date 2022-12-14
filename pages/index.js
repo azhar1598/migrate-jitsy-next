@@ -1,12 +1,5 @@
 import React, { useContext, useState } from "react";
-// import {
-//   Paper,
-//   makeStyles,
-//   TextField,
-//   Button,
-//   Snackbar,
-// } from "@material-ui/core";
-// import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+
 import { useRouter } from "next/router";
 
 // import MuiAlert from "@material-ui/lab/Alert";
@@ -17,10 +10,6 @@ import { Button, createTheme, Paper, Snackbar, TextField } from "@mui/material";
 import { generateString } from "../utils";
 import { MeetContext, MNameContext } from "../context/MeetContext";
 import Script from "next/script";
-// Alert when the user hasn't filled up their name
-// function Alert(props) {
-//   return <MuiAlert elevation={6} variant="filled" {...props} />;
-// }
 
 const AlertBar = ({ open, handleClose }) => (
   <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
@@ -35,9 +24,9 @@ const StartupPage = () => {
   const router = useRouter();
 
   // will be using name across all pages from context
-  const [name, setName] = useContext(MeetContext);
+
   const [mName, setMName] = useContext(MNameContext);
-  // const [mName, setMName] = useContext(MeetContext);
+
 
   // state and handler function for the snackbar
   const [open, setOpen] = useState(false);
@@ -79,14 +68,7 @@ const StartupPage = () => {
             onChange={(e) => setMName(e.target.value)}
             style={{marginRight:'20px'}}
           />
-          <TextField
-            label="Naame"
-            variant="outlined"
-            color="secondary"
-            // className={classes.input}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+        
         </div>
         <div style={{ marginBottom: "1.5rem", textAlign: "center" }}>
           <Button
@@ -94,7 +76,7 @@ const StartupPage = () => {
             color="secondary"
             onClick={() => {
               // if name is empty we mandate user to enter it as we also trigger to open snackbar here
-              if (name === "") {
+              if (mName === "") {
                 handleClick();
                 return;
               }

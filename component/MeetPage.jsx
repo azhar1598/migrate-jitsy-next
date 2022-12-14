@@ -24,6 +24,7 @@ const MeetPage = ({ query }) => {
       height: 500,
       configOverwrite: {
         prejoinPageEnabled: true,
+        disableDeepLinking: true
       },
       interfaceConfigOverwrite: {
         // overwrite interface properties if you want

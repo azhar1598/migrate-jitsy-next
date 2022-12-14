@@ -40,13 +40,27 @@ const MeetPage = ({ query }) => {
       setEnable(true);
       // document.getElementsByClassName('watermark')[0].style.display='none'
     }, 5000);
+
+    // setTimeout(() => {
+    //   let data = document?.getElementsByClassName(
+    //     "watermark leftwatermark"
+    //   ).target;
+    
+    //   // jitsiConferenceFrame0)
+    //   let iframe = document.getElementById("jitsiConferenceFrame0");
+    //   let iWindow = iframe.contentWindow;
+    //   let iDocument = iWindow.document;
+    //   console.log("Script Scope", iDocument);
+    // }, 10000);
   }, []);
 
   return (
     <Fragment>
+
+
       <Script src="https://meet.jit.si/external_api.js" />
 
-      {enable && (
+      {/* {enable && (
         <img
           className="our-logo"
           src="/logo.png"
@@ -62,7 +76,7 @@ const MeetPage = ({ query }) => {
             // borderRadius: "15px",
           }}
         />
-      )}
+      )} */}
 
       {showLoader && (
         <div

@@ -12,7 +12,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 import dynamic from "next/dynamic";
 import Script from "next/script";
-import Image from "next/image";
+// import Image from "next/image";
 
 const ComponentWithNoSSR = dynamic(
   () => import("../../component/MeetPage.jsx"),
@@ -62,17 +62,17 @@ const MeetPage = ({ query }) => {
       <Script src="https://meet.jit.si/external_api.js" />
 
       {enable && (
-        <Image
+        <img
           className="our-logo box"
           src="/logo-miraki.png"
-          height={70}
-          width={140}
+          // height={70}
+          // width={140}
           alt='logo here'
           style={{
             position: "absolute",
             zIndex: 2,
-            // height: "70px",
-            // width: "100px",
+            height: "70px",
+            width: "140px",
             backgroundColor: "white",
             marginTop: "7vh",
             marginLeft: "2vw",

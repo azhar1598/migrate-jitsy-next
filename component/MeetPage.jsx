@@ -21,7 +21,7 @@ const MeetPage = ({ query }) => {
     const options = {
       roomName:'Miraki',
       width: "100%",
-      height: 500,
+      height: 590,
       configOverwrite: {
         prejoinPageEnabled: true,
         disableDeepLinking: true
@@ -93,7 +93,7 @@ const MeetPage = ({ query }) => {
     <React.Fragment>
       <header
         style={{
-          backgroundColor: "#d930ff",
+          backgroundColor: "#292929",
           color: "white",
           textAlign: "center",
         }}

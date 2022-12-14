@@ -56,7 +56,7 @@ const MeetPage = ({ query }) => {
   }, []);
 
   return (
-    <Fragment>
+    <div style={{height:'100vh',backgroundColor:'#292929'}}>
 
 
       <Script src="https://meet.jit.si/external_api.js" />
@@ -97,7 +97,7 @@ const MeetPage = ({ query }) => {
         </div>
       )}
       {enable && !isSSR() && <ComponentWithNoSSR />}
-    </Fragment>
+    </div>
   );
 };
 

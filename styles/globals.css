@@ -2,8 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Montserrat-Medium;
 
 }
 
@@ -114,3 +113,36 @@ p {
     background: black;
   }
 }
+
+
+
+  @font-face {
+    font-family: "Montserrat";
+    src: url("../public/fonts/Montserrat-Regular.ttf") format("truetype");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Montserrat-Medium";
+    src: url("../public/fonts/Montserrat-Medium.ttf") format("truetype");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Montserrat-Semi-Bold";
+    src: url("../public/fonts/Montserrat-SemiBold.ttf") format("truetype");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Montserrat-Bold";
+    src: url("../public/fonts/Montserrat-Bold.ttf") format("truetype");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Montserrat-Extra-Bold";
+    src: url("../public/fonts/Montserrat-ExtraBold.ttf") format("truetype");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Montserrat-Extra-Light";
+    src: url("../public/fonts/Montserrat-ExtraLight.ttf") format("truetype");
+    font-display: swap;
+  }

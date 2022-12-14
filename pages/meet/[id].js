@@ -93,7 +93,7 @@ const MeetPage = ({ query }) => {
           }}
         >
           <CircularProgress color="secondary" />
-          <h3>Please Wait...</h3>
+          <h3 style={{color:'white'}}>Please Wait...</h3>
         </div>
       )}
       {enable && !isSSR() && <ComponentWithNoSSR />}

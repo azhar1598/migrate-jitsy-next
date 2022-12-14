@@ -1,9 +1,7 @@
-
 import { JitsiMeeting } from "@jitsi/react-sdk";
 import { useRouter } from "next/router";
 import React, { useCallback, useContext, useEffect } from "react";
 import { MeetContext, MNameContext } from "../context/MeetContext";
-
 
 const MeetPage = ({ query }) => {
   //AS OF NOW DOMAIN WOULD BE JITSI'S AS WE ARE STILL USING THIER SERVERS
@@ -19,12 +17,12 @@ const MeetPage = ({ query }) => {
   // INTIALISE THE MEET WITH THIS FUNCTION
   const startMeet = useCallback(() => {
     const options = {
-      roomName:'Miraki',
+      roomName: router.query.id,
       width: "100%",
       height: 590,
       configOverwrite: {
         prejoinPageEnabled: true,
-        disableDeepLinking: true
+        disableDeepLinking: true,
       },
       interfaceConfigOverwrite: {
         // overwrite interface properties if you want
@@ -53,6 +51,7 @@ const MeetPage = ({ query }) => {
     } else {
       alert("JitsiMeetExternalAPI not loaded");
     }
+
   }, [startMeet]);
 
   // ALL OUR HANDLERS
@@ -102,11 +101,8 @@ const MeetPage = ({ query }) => {
       </header>
 
       <div id="jitsi-iframe" style={{ marginBottom: 0 }}></div>
-
-
     </React.Fragment>
   );
 };
 
 export default MeetPage;
-

@@ -8,6 +8,17 @@
   overflow: hidden;
 }
 
+.mobile_container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+  background: white;
+  height: 100vh;
+  overflow: hidden;
+}
+
 
 
 .meet_svg {
@@ -105,13 +116,13 @@
   }
 
 
-  .conference {
+  .mobile_conference {
     /* display: none; */
     /* position: absolute; */
     /* top:80px; */
-    position: absolute;
+    /* position: absolute; */
     height: 200px;
-    top: 200px;
+    /* top: 200px; */
     /* position: absolute; */
 
 
@@ -135,23 +146,23 @@
   }
 
   .content {
-    padding: 10px;
+    /* padding: 10px;
     display: flex;
     align-items: center;
     flex-direction: column;
     border: none;
-    width:120vw;
+    width:120vw; */
   }
 
 
-  .title {
+  .mobile_title {
     /* position: absolute; */
     font-size: 30px;
     color: rgb(44, 59, 71);
     font-family: montserrat-semi-bold;
-    top: 90px;
+    /* top: 90px; */
     z-index: 1;
-    left: 30px;
+    /* left: 30px; */
 
     /* From https://css.glass */
     /* From https://css.glass */
@@ -161,8 +172,8 @@
     box-shadow: none;
   }
 
-  .miraki_logo {
-    margin-top: 40vh;
+  .mobile_miraki_logo {
+    /* margin-top: 40vh; */
     /* z-index: 100; */
   }
 

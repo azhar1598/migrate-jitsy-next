@@ -12,6 +12,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 import dynamic from "next/dynamic";
 import Script from "next/script";
+import Stack from "@mui/material/Stack";
+import LinearProgress from "@mui/material/LinearProgress";
 // import Image from "next/image";
 
 const ComponentWithNoSSR = dynamic(
@@ -46,7 +48,7 @@ const MeetPage = ({ query }) => {
     //   let data = document?.getElementsByClassName(
     //     "watermark leftwatermark"
     //   ).target;
-    
+
     //   // jitsiConferenceFrame0)
     //   let iframe = document.getElementById("jitsiConferenceFrame0");
     //   let iWindow = iframe.contentWindow;
@@ -56,9 +58,7 @@ const MeetPage = ({ query }) => {
   }, []);
 
   return (
-    <div style={{height:'100vh',backgroundColor:'#292929'}}>
-
-
+    <div style={{ height: "100vh", backgroundColor: "#292929" }}>
       <Script src="https://meet.jit.si/external_api.js" />
 
       {enable && (
@@ -67,7 +67,7 @@ const MeetPage = ({ query }) => {
           src="/logo-miraki.png"
           // height={70}
           // width={140}
-          alt='logo here'
+          alt="logo here"
           style={{
             position: "absolute",
             zIndex: 2,
@@ -76,10 +76,15 @@ const MeetPage = ({ query }) => {
             backgroundColor: "white",
             marginTop: "7vh",
             marginLeft: "2vw",
-            borderRadius:'10px'
+            borderRadius: "10px",
             // borderRadius: "15px",
           }}
         />
+      )}
+      {showLoader && (
+        <Stack sx={{ width: "100%", color: "grey.500" }} spacing={2}>
+          <LinearProgress color="secondary" />
+        </Stack>
       )}
 
       {showLoader && (
@@ -93,7 +98,7 @@ const MeetPage = ({ query }) => {
           }}
         >
           <CircularProgress color="secondary" />
-          <h3 style={{color:'white'}}>Please Wait...</h3>
+          <h3 style={{ color: "white" }}>Please Wait...</h3>
         </div>
       )}
       {enable && !isSSR() && <ComponentWithNoSSR />}

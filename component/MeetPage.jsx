@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { useCallback, useContext, useEffect } from "react";
 import { MeetContext, MNameContext } from "../context/MeetContext";
 
+
 const MeetPage = ({ query }) => {
   //AS OF NOW DOMAIN WOULD BE JITSI'S AS WE ARE STILL USING THIER SERVERS
   const domain = "meet.jit.si";
@@ -51,7 +52,6 @@ const MeetPage = ({ query }) => {
     } else {
       alert("JitsiMeetExternalAPI not loaded");
     }
-
   }, [startMeet]);
 
   // ALL OUR HANDLERS
@@ -98,6 +98,7 @@ const MeetPage = ({ query }) => {
         }}
       >
         <p style={{ margin: 0, padding: 10 }}>{mName}</p>
+    
       </header>
 
       <div id="jitsi-iframe" style={{ marginBottom: 0 }}></div>

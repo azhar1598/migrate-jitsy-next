@@ -102,18 +102,6 @@
 }
 
 
-@media only screen and (max-width: 600px) {
-  .meet_svg {
-    display: none;
-  }
-
-  .business_meet {
-    display: none;
-  }
-
-  .unique {
-    display: none;
-  }
 
 
   .mobile_conference {
@@ -132,18 +120,7 @@
     display: none;
   }
 
-  .container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    /* align-items: center; */
-    justify-content: space-around;
-    padding: 20px;
-    background: white;
-    height: 115vh;
-    overflow: hidden;
-    width:120vw;
-  }
+
 
   .content {
     /* padding: 10px;
@@ -174,20 +151,17 @@
 
   .mobile_miraki_logo {
     /* margin-top: 40vh; */
+
     /* z-index: 100; */
   }
 
-  .click {
+  .mobile_click {
     padding: 10px;
     color:black;
     /* margin-bottom: 80px; */
   }
 
-  .a_tag{
+  .mobile_a_tag{
     top:70px !important;
   }
 
-  .desc {
-    display: none;
-  }
-}

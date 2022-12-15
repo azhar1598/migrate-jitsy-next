@@ -227,7 +227,7 @@ const StartupPage = () => {
                 height={70}
                 width={140}
                 alt="logo here"
-                className={styles.mobile_miraki_logo}
+                // className={styles.mobile_miraki_logo}
               />
             </a>
 
@@ -302,14 +302,14 @@ const StartupPage = () => {
          
           <p
             // style={{ position: "absolute", top: "20px", fontSize: "14px" }}
-            className={styles.click}
+            className={styles.mobile_click}
           >
             <a href="https://mirakitech.com/">
               click on the link below to know more about our services
             </a>
           </p>
           <a
-            className={styles.a_tag}
+            className={styles.mobile_a_tag}
             href="https://mirakitech.com/"
             style={{
               color: "blue",
